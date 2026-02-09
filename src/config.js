@@ -3,7 +3,7 @@ export default {
     API_HOST_URL: process.env.REACT_APP_API_ENDPOINT,
   },
   production: {
-    API_HOST_URL: "https://bookkeeper-backend.herokuapp.com/api",
+    API_HOST_URL: process.env.REACT_APP_API_ENDPOINT,
   },
 }
 
