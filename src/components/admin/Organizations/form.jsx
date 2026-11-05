@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import clone from 'lodash/clone';
 import isEqual from 'lodash/isEqual';
 import debounce from 'lodash/debounce';
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 import qs from 'qs';
 
 import Input from '../../common/Input';

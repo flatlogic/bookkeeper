@@ -3,7 +3,7 @@ import * as T from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import debounce from 'lodash/debounce';
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 import get from 'lodash/get';
 
 import { set } from '../../../services/object';

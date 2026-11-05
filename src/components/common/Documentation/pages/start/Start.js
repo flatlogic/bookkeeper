@@ -67,7 +67,7 @@ const Start = () => {
                                         <span>
                                             <Code inline>yarn build</Code>: if you need
                                             just to build the app (without
-                                            running a dev server)" />
+                                            running a dev server)" /&gt;
                                         </span>
                                     }
                                 />

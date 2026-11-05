@@ -4,9 +4,9 @@ import {
   ZoomableGroup,
   Geographies,
   Geography,
-  Markers,
   Marker
 } from "react-simple-maps";
+import styles from "./VectorMap.module.scss";
 import map from "../Widget/map.json";
 
 const markers = [
@@ -21,9 +21,10 @@ function VectorMap() {
   return (
     <div>
       <ComposableMap
+        projection="geoNaturalEarth1"
         projectionConfig={{
           scale: 205,
-          rotation: [-11, 0, 0]
+          rotate: [-11, 0, 0]
         }}
         width={980}
         height={551}
@@ -33,51 +34,27 @@ function VectorMap() {
           overflow: "auto"
         }}
       >
-        <ZoomableGroup center={[0, 20]} disablePanning>
+        <ZoomableGroup center={[0, 20]} filterZoomEvent={() => false}>
           <Geographies geography={map}>
-            {(geographies, projection) =>
+            {({ geographies }) =>
               geographies.map(
                 (geography, i) =>
                   geography.id !== "ATA" && (
                     <Geography
                       key={i}
                       geography={geography}
-                      projection={projection}
-                      style={{
-                        default: {
-                          fill: "#D1E7FF",
-                          stroke: "#4B9FFE",
-                          strokeWidth: 0.75,
-                          outline: "none"
-                        },
-                        hover: {
-                          fill: "#4B9FFE",
-                          stroke: "#4B9FFE",
-                          strokeWidth: 0.75,
-                          outline: "none"
-                        },
-                        pressed: {
-                          fill: "#4B9FFE",
-                          stroke: "#4B9FFE",
-                          strokeWidth: 0.75,
-                          outline: "none"
-                        }
-                      }}
+                      className={styles.geography}
                     />
                   )
               )
             }
           </Geographies>
-          <Markers>
+          <g>
             {markers.map((marker, i) => (
               <Marker
                 key={i}
-                marker={marker}
-                style={{
-                  default: { fill: "#4B9FFE" },
-                  hover: { fill: "#FFFFFF" },
-                  pressed: { fill: "#4B9FFE" }
-                }}
+                coordinates={marker.coordinates}
+                className={styles.marker}
               >
                 <circle
                   cx={0}
@@ -101,7 +78,7 @@ function VectorMap() {
                 </text>
               </Marker>
             ))}
-          </Markers>
+          </g>
         </ZoomableGroup>
       </ComposableMap>
     </div>

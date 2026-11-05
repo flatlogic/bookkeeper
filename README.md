@@ -18,30 +18,28 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 
 ## 🚀 Quick Start
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/flatlogic/bookkeeper-ui.git
-   cd bookkeeper-ui
-   ```
-2. **Install dependencies**  
-   ```bash
-   yarn install
-   ```
-3. **Run the app**  
-   ```bash
-   yarn start
-   ```
-   Navigate to http://localhost:3000/.
+Use Node.js 22.12 or newer.
 
-4. **Backend Support**  
-   ```bash
-   yarn start:backend
-   ```
+```sh
+git clone https://github.com/flatlogic/bookkeeper.git
+cd bookkeeper
+npm ci --legacy-peer-deps
+npm start
+```
 
-5. **Build for production**  
-   ```bash
-   yarn build
-   ```
+Open http://127.0.0.1:5173. The existing development API endpoint is http://localhost:8080/api; production keeps the endpoint in `src/config.js`.
+
+```sh
+npm run build
+npm run preview
+npm audit
+npm test
+PLAYWRIGHT_DEV=1 npm test
+```
+
+Vite builds to `build/`; `package-lock.json` is the canonical lockfile after verifying the complete runtime/development graph. The superseded Yarn lock is removed. The explicit install flag preserves the existing MUIDataTables3/tree/scrollzone DnD peer-metadata conflict without introducing a framework migration; no global peer-check bypass is configured. React16, MUI4, routes, accounting forms, SCSS and assets remain.
+
+The locally installed Chrome regression covers API-fixture login, Joi invalid-name rejection, organization create/update/delete, table search/filter/visibility/sort/pagination/selection, dynamic table controls, actual chart output, calendar cells, vector countries/marker/colors and logout in production and development. It fails on browser page errors; the live backend, OAuth and external Google Maps are not exercised. Existing React/MUI/Sass component/deprecation warnings remain.
 
 ---
 

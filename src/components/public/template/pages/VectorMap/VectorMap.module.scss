@@ -1,0 +1,14 @@
+.geography {
+  fill: #d1e7ff;
+  stroke: #4b9ffe;
+  stroke-width: 0.75;
+  outline: none;
+  &:hover { fill: #4b9ffe; }
+  &:active { fill: #4b9ffe; }
+}
+
+.marker {
+  fill: #4b9ffe;
+  &:hover { fill: #fff; }
+  &:active { fill: #4b9ffe; }
+}
