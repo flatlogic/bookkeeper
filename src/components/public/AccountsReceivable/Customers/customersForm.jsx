@@ -2,7 +2,7 @@ import React from 'react';
 import * as T from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';

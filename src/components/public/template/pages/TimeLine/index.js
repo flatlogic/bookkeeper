@@ -10,12 +10,7 @@ import {
 } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import { Navigation as NavigationIcon } from "@material-ui/icons";
-import {
-  withGoogleMap,
-  withScriptjs,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
+import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 import {
   Favorite as LikeIcon,
   Chat as CommentsIcon,
@@ -53,19 +48,7 @@ const styles = theme => ({
   }
 })
 
-const BasicMap = withScriptjs(
-  withGoogleMap(() => (
-    <GoogleMap
-      defaultZoom={12}
-      defaultCenter={{
-        lat: parseFloat(-37.813179),
-        lng: parseFloat(144.950259)
-      }}
-    >
-      <Marker position={{ lat: -37.813179, lng: 144.950259 }} />
-    </GoogleMap>
-  ))
-);
+
 
 function TimelineComp({ classes }) {
   const [expanded, setExpanded] = React.useState(false);
@@ -99,23 +82,12 @@ function TimelineComp({ classes }) {
                       </Typography>
                     </Box>
                     <Box height={200} width={"100%"} mx={"-24px"} mt={2}>
-                      <BasicMap
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg"
-                        loadingElement={
-                          <div
-                            style={{ height: "inherit", width: "inherit" }}
-                          />
-                        }
-                        containerElement={
-                          <div
-                            style={{
-                              height: "100%",
-                              width: "calc(100% + 48px)"
-                            }}
-                          />
-                        }
-                        mapElement={<div style={{ height: "100%" }} />}
-                      />
+                      <LoadScript googleMapsApiKey="AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg">
+        <GoogleMap mapContainerStyle={{ height: '100%', width: 'calc(100% + 48px)' }} zoom={12}
+          center={{ lat: -37.813179, lng: 144.950259 }}>
+          <Marker position={{ lat: -37.813179, lng: 144.950259 }} />
+        </GoogleMap>
+      </LoadScript>
                     </Box>
                     <Box display="flex" ml={"-12px"} my={1}>
                       <IconButton aria-label="like">

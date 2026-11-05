@@ -1,7 +1,7 @@
 import React from 'react';
 import * as T from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 import { withStyles } from '@material-ui/core/styles';
 import debounce from 'lodash/debounce';
 
